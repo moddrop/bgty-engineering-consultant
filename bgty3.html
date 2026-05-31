@@ -264,8 +264,8 @@
       position: absolute;
       inset: 0;
       background-image: linear-gradient(rgba(201, 168, 76, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 168, 76, 0.035) 1px, transparent 1px);
-      background-size: 80px 80px;
-      opacity: 0.5;
+      background-size: 72px 72px;
+      animation: drift 25s linear infinite;
     }
 
     @keyframes drift {
@@ -275,7 +275,14 @@
     }
 
     .hero-glow {
-      display: none;
+      position: absolute;
+      right: 10%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.05) 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .hero-content {
@@ -293,6 +300,8 @@
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.2s forwards;
     }
 
     .hero-tag::before {
@@ -309,6 +318,8 @@
       line-height: 1.05;
       color: var(--white);
       margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.35s forwards;
     }
 
     h1.hero-title strong {
@@ -323,52 +334,16 @@
       color: var(--steel-light);
       max-width: 500px;
       margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.5s forwards;
     }
 
     .hero-btns {
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
-    }
-
-    .hero-jobs {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px 18px;
-      margin-top: 26px;
-    }
-
-    .hero-jobs-label {
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--steel);
-    }
-
-    .hero-job-link {
-      font-size: 12px;
-      letter-spacing: 0.5px;
-      color: var(--gold-light);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(201, 168, 76, 0.35);
-      padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .hero-job-link:hover {
-      color: var(--gold);
-      border-color: var(--gold);
-    }
-
-    .hero-job-link-alt {
-      color: var(--steel-light);
-      border-color: rgba(138, 155, 181, 0.35);
-    }
-
-    .hero-job-link-alt:hover {
-      color: var(--white);
-      border-color: var(--steel-light);
+      opacity: 0;
+      animation: fadeUp 0.7s 0.65s forwards;
     }
 
     .hero-stats {
@@ -376,6 +351,8 @@
       gap: 48px;
       flex-wrap: wrap;
       margin-top: 56px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.85s forwards;
     }
 
     .stat-num {
@@ -885,45 +862,6 @@
       margin-top: 2px;
     }
 
-    .apply-box {
-      margin-top: 14px;
-      padding: 28px 32px;
-      border: 1px solid rgba(201, 168, 76, 0.18);
-      background: linear-gradient(135deg, rgba(201, 168, 76, 0.05), rgba(201, 168, 76, 0.01));
-    }
-
-    .apply-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 8px;
-    }
-
-    .apply-sub {
-      font-size: 13px;
-      line-height: 1.6;
-      color: var(--steel-light);
-      margin-bottom: 20px;
-    }
-
-    .apply-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .apply-links .btn-border {
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      padding: 12px 22px;
-    }
-
-    .btn-border-ghost {
-      border-color: rgba(138, 155, 181, 0.35) !important;
-      color: var(--steel-light) !important;
-    }
-
     .job-open-call p {
       font-size: 13px;
       color: var(--steel);
@@ -1392,6 +1330,7 @@
     <ul class="nav-links">
       <li><a href="#about" data-en>About</a><a href="#about" data-zh>关于我们</a><a href="#about" data-th>เกี่ยวกับเรา</a></li>
       <li><a href="#services" data-en>Services</a><a href="#services" data-zh>服务</a><a href="#services" data-th>บริการ</a></li>
+      <li><a href="#why" data-en>Why Us</a><a href="#why" data-zh>为何选择我们</a><a href="#why" data-th>ทำไมต้องเรา</a></li>
       <li><a href="#team" data-en>Team</a><a href="#team" data-zh>团队</a><a href="#team" data-th>ทีมงาน</a></li>
       <li><a href="#careers" data-en>Careers</a><a href="#careers" data-zh>招聘</a><a href="#careers" data-th>ร่วมงานกับเรา</a></li>
       <li><a href="#contact" class="nav-cta" data-en>Contact</a><a href="#contact" class="nav-cta" data-zh>联系我们</a><a href="#contact" class="nav-cta" data-th>ติดต่อเรา</a></li>
@@ -1403,6 +1342,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="#about" class="mm-link"><span data-en>About</span><span data-zh>关于我们</span><span data-th>เกี่ยวกับเรา</span></a>
     <a href="#services" class="mm-link"><span data-en>Services</span><span data-zh>服务</span><span data-th>บริการ</span></a>
+    <a href="#why" class="mm-link"><span data-en>Why Us</span><span data-zh>为何选择我们</span><span data-th>ทำไมต้องเรา</span></a>
     <a href="#team" class="mm-link"><span data-en>Team</span><span data-zh>团队</span><span data-th>ทีมงาน</span></a>
     <a href="#careers" class="mm-link"><span data-en>Careers</span><span data-zh>招聘</span><span data-th>ร่วมงานกับเรา</span></a>
     <a href="#contact" class="mm-link"><span data-en>Contact</span><span data-zh>联系我们</span><span data-th>ติดต่อเรา</span></a>
@@ -1432,15 +1372,6 @@
         <a href="#services" class="btn-gold" data-zh>查看服务 →</a><a href="#services" class="btn-gold" data-th>บริการของเรา →</a>
         <a href="#contact" class="btn-border" data-en>Get in Touch</a>
         <a href="#contact" class="btn-border" data-zh>联系我们</a><a href="#contact" class="btn-border" data-th>ติดต่อเรา</a>
-      </div>
-      <div class="hero-jobs">
-        <span class="hero-jobs-label"><span data-en>We're hiring:</span><span data-zh>诚聘人才：</span><span data-th>เรากำลังรับสมัครงาน:</span></span>
-        <a href="https://www.jobthai.com/th/company/295490" target="_blank" rel="noopener" class="hero-job-link">
-          <span data-en>View Jobs on JobThai →</span><span data-zh>JobThai 招聘职位 →</span><span data-th>ดูตำแหน่งงานบน JobThai →</span>
-        </a>
-        <a href="#careers" class="hero-job-link hero-job-link-alt">
-          <span data-en>Careers at BGTY →</span><span data-zh>BGTY 招聘 →</span><span data-th>ร่วมงานกับ BGTY →</span>
-        </a>
       </div>
       <div class="hero-stats">
         <div>
@@ -1637,6 +1568,63 @@
   </section>
 
   <!-- WHY US -->
+  <section id="why" class="section">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="label"><span data-en>Why Choose BGTY</span><span data-zh>选择BGTY的理由</span><span data-th>ทำไมต้องเลือก BGTY</span></div>
+        <h2 class="sec-title">
+          <span data-en>What makes us <em>different</em></span>
+          <span data-zh>我们的<em>独特之处</em></span><span data-th>สิ่งที่ทำให้เรา<em>แตกต่าง</em></span>
+        </h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <svg class="why-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+          <div class="why-title"><span data-en>Properly Registered</span><span data-zh>正规注册</span><span data-th>จดทะเบียนถูกต้อง</span></div>
+          <p class="why-desc"><span data-en>Registered with Thailand's Department of Business Development. All work
+              follows Thai building law and applicable international codes.</span><span
+              data-zh>在泰国商业发展厅正式注册，所有工作均遵循泰国建筑法规及相关国际标准。</span><span data-th>จดทะเบียนกับกรมพัฒนาธุรกิจการค้าของไทย งานทุกชิ้นเป็นไปตามกฎหมายอาคารไทยและมาตรฐานสากลที่เกี่ยวข้อง</span></p>
+        </div>
+        <div class="why-card reveal">
+          <svg class="why-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.5">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+          <div class="why-title"><span data-en>Three Languages In-House</span><span data-zh>三语团队</span><span data-th>ทีมงานสามภาษาในองค์กร</span></div>
+          <p class="why-desc"><span data-en>Thai, Chinese, and English — all in-house. This cuts out the
+              miscommunication that often slows cross-border projects down.</span><span
+              data-zh>团队内部具备泰语、中文及英语能力，有效避免跨国项目中因语言障碍造成的沟通延误。</span><span data-th>ภาษาไทย จีน และอังกฤษครบในทีมเดียว ช่วยลดความเข้าใจผิดที่มักทำให้โครงการข้ามพรมแดนล่าช้า</span></p>
+        </div>
+        <div class="why-card reveal">
+          <svg class="why-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.5">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          <div class="why-title"><span data-en>Clear Timelines</span><span data-zh>清晰的工期管理</span><span data-th>กำหนดเวลาที่ชัดเจน</span></div>
+          <p class="why-desc"><span data-en>We work to specific milestones and keep clients updated regularly. If
+              something needs adjusting, we say so early rather than letting it become a problem.</span><span
+              data-zh>按明确里程碑推进，定期向客户汇报进展。如需调整，我们会提前告知，而非等问题发酵。</span><span data-th>เราทำงานตามหมุดหมายที่ชัดเจนและอัปเดตลูกค้าอย่างสม่ำเสมอ หากต้องปรับเปลี่ยน เราจะแจ้งแต่เนิ่นๆ ก่อนจะกลายเป็นปัญหา</span></p>
+        </div>
+        <div class="why-card reveal">
+          <svg class="why-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.5">
+            <line x1="12" y1="1" x2="12" y2="23" />
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+          </svg>
+          <div class="why-title"><span data-en>No Hidden Costs</span><span data-zh>费用透明</span><span data-th>ไม่มีค่าใช้จ่ายแอบแฝง</span></div>
+          <p class="why-desc"><span data-en>We agree on scope and fees before starting. Clients know exactly what
+              they're paying for — no surprises part-way through a project.</span><span
+              data-zh>合作前明确服务范围与费用，客户清楚了解所付费用的对应服务，项目过程中无隐性收费。</span><span data-th>เราตกลงขอบเขตงานและค่าบริการก่อนเริ่มงาน ลูกค้าทราบชัดเจนว่าจ่ายเพื่ออะไร ไม่มีค่าใช้จ่ายแฝงระหว่างทาง</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- TEAM -->
   <section id="team" class="section bg-mid">
@@ -1941,23 +1929,6 @@
                 <span data-en>Send Your CV</span><span data-zh>发送简历</span><span data-th>ส่งประวัติของคุณ</span>
               </a>
             </div>
-
-            <div class="apply-box">
-              <div class="apply-title">
-                <span data-en>How to Apply</span><span data-zh>如何申请</span><span data-th>วิธีการสมัครงาน</span>
-              </div>
-              <p class="apply-sub">
-                <span data-en>Apply through our official job listings, or verify our company details below.</span><span data-zh>请通过我们的官方招聘页面投递申请，或在下方查询公司注册信息。</span><span data-th>สมัครผ่านประกาศรับสมัครงานอย่างเป็นทางการของเรา หรือตรวจสอบข้อมูลบริษัทด้านล่าง</span>
-              </p>
-              <div class="apply-links">
-                <a href="https://www.jobthai.com/th/company/295490" target="_blank" rel="noopener" class="btn-border">
-                  <span data-en>Job Openings on JobThai</span><span data-zh>JobThai 招聘职位</span><span data-th>ตำแหน่งงานบน JobThai</span>
-                </a>
-                <a href="https://www.dataforthai.com/company/0105561002014/" target="_blank" rel="noopener" class="btn-border btn-border-ghost">
-                  <span data-en>Company Registration Info</span><span data-zh>公司注册信息</span><span data-th>ข้อมูลการจดทะเบียนบริษัท</span>
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -1980,6 +1951,7 @@
         <ul class="footer-links">
           <li><a href="#about"><span data-en>About</span><span data-zh>关于我们</span><span data-th>เกี่ยวกับเรา</span></a></li>
           <li><a href="#services"><span data-en>Services</span><span data-zh>服务</span><span data-th>บริการ</span></a></li>
+          <li><a href="#why"><span data-en>Why Us</span><span data-zh>我们的优势</span><span data-th>ทำไมต้องเรา</span></a></li>
           <li><a href="#team"><span data-en>Team</span><span data-zh>团队</span><span data-th>ทีมงาน</span></a></li>
         </ul>
       </div>
