@@ -1,128 +1,2065 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coming Soon</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BGTY Engineering & Consultant Co., Ltd.</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --navy: #0c1b30;
+      --navy-mid: #112240;
+      --navy-light: #1b3560;
+      --gold: #c9a84c;
+      --gold-light: #e2c47a;
+      --white: #f0ece3;
+      --off-white: #ddd8cc;
+      --steel: #8a9bb5;
+      --steel-light: #b4c0d2;
+    }
 
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Poppins', sans-serif;
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-        height: 100vh;
-        background: radial-gradient(circle at top, #1a1a1a, #000000);
-        color: #ffd93d;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--off-white);
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold);
+    }
+
+    /* ── LANGUAGE BAR ── */
+    .lang-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 36px;
+      background: var(--navy-mid);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 60px;
+      z-index: 1100;
+      gap: 4px;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--steel);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      padding: 3px 10px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .lang-btn.active {
+      color: var(--gold);
+      border-color: rgba(201, 168, 76, 0.35);
+    }
+
+    .lang-btn:hover {
+      color: var(--gold);
+    }
+
+    .lang-sep {
+      color: var(--steel);
+      font-size: 11px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 36px;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 60px;
+      transition: background 0.4s, padding 0.3s;
+    }
+
+    nav.scrolled {
+      background: rgba(12, 27, 48, 0.96);
+      backdrop-filter: blur(10px);
+      padding: 12px 60px;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.13);
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      text-decoration: none;
+    }
+
+    .nav-logo-main {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      color: var(--gold);
+      letter-spacing: 3px;
+      line-height: 1;
+    }
+
+    .nav-logo-sub {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--steel-light);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--steel-light);
+      font-weight: 500;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      border: 1px solid var(--gold) !important;
+      color: var(--gold) !important;
+      padding: 7px 20px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold) !important;
+      color: var(--navy) !important;
+    }
+
+    .nav-cta::after {
+      display: none !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--gold);
+      transition: all 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: var(--navy);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      transform: translateX(100%);
+      transition: transform 0.4s ease;
+    }
+
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    .mobile-menu a {
+      text-decoration: none;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      color: var(--white);
+    }
+
+    .mobile-menu a:hover {
+      color: var(--gold);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 140px 60px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #0c1b30 0%, #0e2244 55%, #0c1b30 100%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(201, 168, 76, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 168, 76, 0.035) 1px, transparent 1px);
+      background-size: 80px 80px;
+      opacity: 0.5;
+    }
+
+    @keyframes drift {
+      to {
+        background-position: 72px 72px;
+      }
+    }
+
+    .hero-glow {
+      display: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h1.hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(48px, 6.5vw, 88px);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    h1.hero-title strong {
+      font-weight: 600;
+      color: var(--gold);
+      display: block;
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--steel-light);
+      max-width: 500px;
+      margin-bottom: 40px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-jobs {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      margin-top: 26px;
+    }
+
+    .hero-jobs-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--steel);
+    }
+
+    .hero-job-link {
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      color: var(--gold-light);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.35);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .hero-job-link:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .hero-job-link-alt {
+      color: var(--steel-light);
+      border-color: rgba(138, 155, 181, 0.35);
+    }
+
+    .hero-job-link-alt:hover {
+      color: var(--white);
+      border-color: var(--steel-light);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+      margin-top: 56px;
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 40px;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--steel);
+      margin-top: 3px;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold);
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-border {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(201, 168, 76, 0.4);
+      color: var(--off-white);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .btn-border:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 100px 60px;
+    }
+
+    .section.bg-mid {
+      background: var(--navy-mid);
+    }
+
+    .section-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .label::before {
+      content: '';
+      width: 22px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h2.sec-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 3.5vw, 50px);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    h2.sec-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-text p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--steel-light);
+      margin-bottom: 18px;
+    }
+
+    .info-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.12);
+      padding: 40px;
+      position: relative;
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      width: 36px;
+      height: 36px;
+      border-top: 2px solid var(--gold);
+      border-left: 2px solid var(--gold);
+    }
+
+    .info-card::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      right: -1px;
+      width: 36px;
+      height: 36px;
+      border-bottom: 2px solid var(--gold);
+      border-right: 2px solid var(--gold);
+    }
+
+    .reg-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--steel);
+      margin-bottom: 4px;
+    }
+
+    .reg-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      color: var(--gold-light);
+      letter-spacing: 2px;
+      margin-bottom: 28px;
+    }
+
+    .info-row {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 22px;
+      align-items: flex-start;
+    }
+
+    .info-icon {
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .info-key {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--steel);
+      margin-bottom: 3px;
+    }
+
+    .info-val {
+      font-size: 14px;
+      color: var(--white);
+      line-height: 1.55;
+    }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 56px;
+    }
+
+    .svc-card {
+      background: var(--navy);
+      border: 1px solid rgba(201, 168, 76, 0.07);
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.25s;
+    }
+
+    .svc-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s;
+    }
+
+    .svc-card:hover {
+      border-color: rgba(201, 168, 76, 0.2);
+      transform: translateY(-4px);
+    }
+
+    .svc-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .svc-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 60px;
+      color: rgba(201, 168, 76, 0.05);
+      line-height: 1;
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      transition: color 0.3s;
+    }
+
+    .svc-card:hover .svc-num {
+      color: rgba(201, 168, 76, 0.1);
+    }
+
+    .svc-icon {
+      color: var(--gold);
+      margin-bottom: 22px;
+    }
+
+    .svc-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .svc-desc {
+      font-size: 13px;
+      line-height: 1.78;
+      color: var(--steel);
+    }
+
+    /* ── WHY US ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-top: 56px;
+    }
+
+    .why-card {
+      padding: 40px 28px;
+      text-align: center;
+      border: 1px solid rgba(201, 168, 76, 0.07);
+      background: var(--navy);
+      transition: border-color 0.3s;
+    }
+
+    .why-card:hover {
+      border-color: rgba(201, 168, 76, 0.2);
+    }
+
+    .why-icon {
+      color: var(--gold);
+      margin: 0 auto 20px;
+      display: block;
+    }
+
+    .why-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .why-desc {
+      font-size: 13px;
+      line-height: 1.75;
+      color: var(--steel);
+    }
+
+    /* ── TEAM ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .team-group {
+      margin-top: 56px;
+    }
+
+    .team-group-title {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+    }
+
+    .team-group-title::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .team-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.25s;
+    }
+
+    .team-card::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      width: 28px;
+      height: 28px;
+      border-top: 2px solid var(--gold);
+      border-left: 2px solid var(--gold);
+    }
+
+    .team-card:hover {
+      border-color: rgba(201, 168, 76, 0.25);
+      transform: translateY(-4px);
+    }
+
+    .team-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy-light), var(--navy));
+      border: 2px solid rgba(201, 168, 76, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      color: var(--gold);
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+
+    .team-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .team-role {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      line-height: 1.5;
+    }
+
+    .team-role::before {
+      content: '';
+      width: 14px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ── CAREERS ── */
+    .careers-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .careers-text p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--steel-light);
+      margin-bottom: 28px;
+    }
+
+    .benefits {
+      list-style: none;
+      margin-top: 4px;
+    }
+
+    .benefits li {
+      font-size: 13px;
+      color: var(--steel);
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .benefits li::before {
+      content: '✦';
+      color: var(--gold);
+      font-size: 9px;
+    }
+
+    .job-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .job-card {
+      background: var(--navy);
+      border: 1px solid rgba(201, 168, 76, 0.08);
+      padding: 28px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+
+    .job-card:hover {
+      border-color: rgba(201, 168, 76, 0.22);
+      transform: translateX(4px);
+    }
+
+    .job-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .job-meta {
+      font-size: 12px;
+      color: var(--steel);
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .job-badge {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    .job-open-call {
+      padding: 26px 32px;
+      border: 1px dashed rgba(201, 168, 76, 0.2);
+      background: rgba(201, 168, 76, 0.02);
+      text-align: center;
+      margin-top: 2px;
+    }
+
+    .apply-box {
+      margin-top: 14px;
+      padding: 28px 32px;
+      border: 1px solid rgba(201, 168, 76, 0.18);
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.05), rgba(201, 168, 76, 0.01));
+    }
+
+    .apply-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .apply-sub {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--steel-light);
+      margin-bottom: 20px;
+    }
+
+    .apply-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .apply-links .btn-border {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      padding: 12px 22px;
+    }
+
+    .btn-border-ghost {
+      border-color: rgba(138, 155, 181, 0.35) !important;
+      color: var(--steel-light) !important;
+    }
+
+    .job-open-call p {
+      font-size: 13px;
+      color: var(--steel);
+      margin-bottom: 14px;
+    }
+
+    /* ── CONTACT ── */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 72px;
+    }
+
+    .contact-info p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--steel-light);
+      margin-bottom: 36px;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 26px;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .contact-key {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .contact-val {
+      font-size: 14px;
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    .contact-form {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      padding: 44px;
+      position: relative;
+    }
+
+    .contact-form::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      width: 36px;
+      height: 36px;
+      border-top: 2px solid var(--gold);
+      border-left: 2px solid var(--gold);
+    }
+
+    .form-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 14px;
+    }
+
+    .form-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--steel);
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(201, 168, 76, 0.13);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      padding: 12px 16px;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: rgba(201, 168, 76, 0.4);
+    }
+
+    .form-select option {
+      background: var(--navy-mid);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      margin-top: 6px;
+    }
+
+    .form-submit:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 18px;
+      color: var(--gold);
+      font-size: 13px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #081524;
+      border-top: 1px solid rgba(201, 168, 76, 0.1);
+      padding: 56px 60px 36px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 52px;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      color: var(--gold);
+      letter-spacing: 3px;
+      margin-bottom: 4px;
+    }
+
+    .footer-sub {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--steel);
+      margin-bottom: 16px;
+    }
+
+    .footer-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      font-style: italic;
+      color: var(--steel);
+      line-height: 1.6;
+      max-width: 260px;
+    }
+
+    .footer-col-title {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      font-size: 13px;
+      color: var(--steel);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--off-white);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--steel);
+    }
+
+    .footer-reg {
+      font-size: 11px;
+      color: var(--steel);
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s, transform 0.7s;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── LANGUAGE SYSTEM ── */
+    [data-en],
+    [data-zh],
+    [data-th] {
+      display: none;
+    }
+
+    body.lang-en [data-en] {
+      display: block;
+    }
+
+    body.lang-zh [data-zh] {
+      display: block;
+    }
+
+    body.lang-th [data-th] {
+      display: block;
+    }
+
+    span[data-en],
+    span[data-zh],
+    span[data-th] {
+      display: none;
+    }
+
+    body.lang-en span[data-en] {
+      display: inline;
+    }
+
+    body.lang-zh span[data-zh] {
+      display: inline;
+    }
+
+    body.lang-th span[data-th] {
+      display: inline;
+    }
+
+    a[data-en],
+    a[data-zh],
+    a[data-th] {
+      display: none;
+    }
+
+    body.lang-en a[data-en] {
+      display: inline-flex;
+    }
+
+    body.lang-zh a[data-zh] {
+      display: inline-flex;
+    }
+
+    body.lang-th a[data-th] {
+      display: inline-flex;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1080px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 14px 24px;
+      }
+
+      nav.scrolled {
+        padding: 10px 24px;
+      }
+
+      .lang-bar {
+        padding: 0 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
         display: flex;
-        justify-content: center;
-        align-items: center;
+      }
+
+      .section {
+        padding: 72px 24px;
+      }
+
+      #hero {
+        padding: 130px 24px 72px;
+      }
+
+      .hero-stats {
+        gap: 24px;
+      }
+
+      .services-grid,
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .careers-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
         text-align: center;
-        overflow: hidden;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-form {
+        padding: 28px 24px;
+      }
+
+      .info-card {
+        padding: 28px 24px;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
-    /* Glow background effect */
-    body::before {
-        content: "";
-        position: absolute;
-        width: 400px;
-        height: 400px;
-        background: #ffd93d;
-        filter: blur(150px);
-        opacity: 0.15;
-        top: 20%;
-        left: 50%;
-        transform: translateX(-50%);
-        animation: float 6s ease-in-out infinite;
-    }
+    @media (max-width: 600px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 16px;
+      }
 
-    @keyframes float {
-        0%, 100% { transform: translateX(-50%) translateY(0); }
-        50% { transform: translateX(-50%) translateY(-30px); }
-    }
+      /* Compact cards: avatar in its own column, name+role stacked beside it */
+      .team-card {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+        align-items: center;
+        column-gap: 14px;
+        row-gap: 2px;
+        padding: 14px 16px;
+      }
 
-    .container {
-        position: relative;
-        z-index: 1;
-        max-width: 600px;
-        padding: 20px;
-    }
+      .team-avatar {
+        grid-row: 1 / 3;
+        width: 42px;
+        height: 42px;
+        font-size: 15px;
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
 
-    h1 {
-        font-size: 3.5rem;
-        font-weight: 700;
-        letter-spacing: 2px;
-        margin-bottom: 15px;
-        text-transform: uppercase;
-        text-shadow: 0 0 10px #ffd93d, 0 0 30px #ffcc00;
-    }
+      .team-name {
+        font-size: 18px;
+        margin-bottom: 2px;
+      }
 
-    p {
-        font-size: 1.2rem;
-        opacity: 0.8;
-        margin-bottom: 40px;
-    }
+      .team-role {
+        font-size: 9px;
+        letter-spacing: 1.5px;
+        gap: 6px;
+      }
 
-    .countdown {
-        font-size: 2rem;
-        font-weight: 500;
-        letter-spacing: 3px;
-        padding: 15px 25px;
-        border: 2px solid #ffd93d;
-        border-radius: 12px;
-        display: inline-block;
-        box-shadow: 0 0 20px rgba(255, 217, 61, 0.4);
-    }
+      .team-group {
+        margin-top: 36px;
+      }
 
-    /* Button */
-    .notify-btn {
-        margin-top: 30px;
-        padding: 12px 30px;
-        border: none;
-        border-radius: 30px;
-        background: #ffd93d;
-        color: #000;
-        font-weight: 600;
-        cursor: pointer;
-        transition: 0.3s ease;
+      .team-group-title {
+        font-size: 12px;
+        letter-spacing: 1.8px;
+        gap: 12px;
+      }
     }
-
-    .notify-btn:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 20px #ffd93d;
-    }
-
-    @media (max-width: 500px) {
-        h1 {
-            font-size: 2.2rem;
-        }
-
-        .countdown {
-            font-size: 1.4rem;
-        }
-    }
-</style>
+  </style>
 </head>
 
-<body>
+<body class="lang-en">
 
-<div class="container">
-    <h1>Coming Soon</h1>
-    <p>Something amazing is on the way. Stay tuned.</p>
+  <!-- LANG BAR -->
+  <div class="lang-bar">
+    <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
+    <span class="lang-sep">|</span>
+    <button class="lang-btn" onclick="setLang('zh')" id="btn-zh">中文</button>
+    <span class="lang-sep">|</span>
+    <button class="lang-btn" onclick="setLang('th')" id="btn-th">ไทย</button>
+  </div>
 
-    <div class="countdown">
-        Launching Soon...
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-main">BGTY</div>
+      <div class="nav-logo-sub">Engineering &amp; Consultant</div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about" data-en>About</a><a href="#about" data-zh>关于我们</a><a href="#about" data-th>เกี่ยวกับเรา</a></li>
+      <li><a href="#services" data-en>Services</a><a href="#services" data-zh>服务</a><a href="#services" data-th>บริการ</a></li>
+      <li><a href="#team" data-en>Team</a><a href="#team" data-zh>团队</a><a href="#team" data-th>ทีมงาน</a></li>
+      <li><a href="#careers" data-en>Careers</a><a href="#careers" data-zh>招聘</a><a href="#careers" data-th>ร่วมงานกับเรา</a></li>
+      <li><a href="#contact" class="nav-cta" data-en>Contact</a><a href="#contact" class="nav-cta" data-zh>联系我们</a><a href="#contact" class="nav-cta" data-th>ติดต่อเรา</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" class="mm-link"><span data-en>About</span><span data-zh>关于我们</span><span data-th>เกี่ยวกับเรา</span></a>
+    <a href="#services" class="mm-link"><span data-en>Services</span><span data-zh>服务</span><span data-th>บริการ</span></a>
+    <a href="#team" class="mm-link"><span data-en>Team</span><span data-zh>团队</span><span data-th>ทีมงาน</span></a>
+    <a href="#careers" class="mm-link"><span data-en>Careers</span><span data-zh>招聘</span><span data-th>ร่วมงานกับเรา</span></a>
+    <a href="#contact" class="mm-link"><span data-en>Contact</span><span data-zh>联系我们</span><span data-th>ติดต่อเรา</span></a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span data-en>Bangkok, Thailand · Est. 2018</span>
+        <span data-zh>泰国曼谷 · 成立于 2018</span><span data-th>กรุงเทพฯ ประเทศไทย · ก่อตั้งปี 2018</span>
+      </div>
+      <h1 class="hero-title">
+        <span data-en>Engineering you<br><strong>can rely on.</strong></span>
+        <span data-zh>值得信赖的<br><strong>工程顾问</strong></span><span data-th>งานวิศวกรรมที่คุณ<br><strong>วางใจได้</strong></span>
+      </h1>
+      <p class="hero-desc">
+        <span data-en>BGTY Engineering & Consultant provides technical engineering services and project consultancy
+          across Bangkok and Thailand — with a team fluent in Thai, Chinese, and English.</span>
+        <span data-zh>BGTY工程顾问专注于为曼谷及泰国各地提供专业工程服务与项目咨询，团队具备泰语、中文及英语沟通能力。</span><span data-th>BGTY Engineering & Consultant ให้บริการงานวิศวกรรมเชิงเทคนิคและที่ปรึกษาโครงการทั่วกรุงเทพฯ และประเทศไทย โดยทีมงานที่สื่อสารได้ทั้งภาษาไทย จีน และอังกฤษ</span>
+      </p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-gold" data-en>Our Services →</a>
+        <a href="#services" class="btn-gold" data-zh>查看服务 →</a><a href="#services" class="btn-gold" data-th>บริการของเรา →</a>
+        <a href="#contact" class="btn-border" data-en>Get in Touch</a>
+        <a href="#contact" class="btn-border" data-zh>联系我们</a><a href="#contact" class="btn-border" data-th>ติดต่อเรา</a>
+      </div>
+      <div class="hero-jobs">
+        <span class="hero-jobs-label"><span data-en>We're hiring:</span><span data-zh>诚聘人才：</span><span data-th>เรากำลังรับสมัครงาน:</span></span>
+        <a href="https://www.jobthai.com/th/company/295490" target="_blank" rel="noopener" class="hero-job-link">
+          <span data-en>View Jobs on JobThai →</span><span data-zh>JobThai 招聘职位 →</span><span data-th>ดูตำแหน่งงานบน JobThai →</span>
+        </a>
+        <a href="#careers" class="hero-job-link hero-job-link-alt">
+          <span data-en>Careers at BGTY →</span><span data-zh>BGTY 招聘 →</span><span data-th>ร่วมงานกับ BGTY →</span>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num" data-count="6">0</div>
+          <div class="stat-label"><span data-en>Years Active</span><span data-zh>成立年数</span><span data-th>ปีที่ดำเนินงาน</span></div>
+        </div>
+        <div>
+          <div class="stat-num" data-count="50">0</div>
+          <div class="stat-label"><span data-en>Projects Done</span><span data-zh>完工项目</span><span data-th>โครงการที่เสร็จสิ้น</span></div>
+        </div>
+        <div>
+          <div class="stat-num">3</div>
+          <div class="stat-label"><span data-en>Languages</span><span data-zh>服务语言</span><span data-th>ภาษา</span></div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <br>
-    <button class="notify-btn">Notify Me</button>
-</div>
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="reveal">
+          <div class="label"><span data-en>Who We Are</span><span data-zh>关于我们</span><span data-th>เกี่ยวกับเรา</span></div>
+          <h2 class="sec-title">
+            <span data-en>A Bangkok firm built for <em>complex projects.</em></span>
+            <span data-zh>专为<em>复杂项目</em>而生的曼谷工程公司</span><span data-th>บริษัทในกรุงเทพฯ ที่สร้างขึ้นเพื่อ<em>โครงการที่ซับซ้อน</em></span>
+          </h2>
+          <div class="about-text">
+            <div data-en>
+              <p>We're a registered engineering and consultancy firm based on Rama 9 Road in Bangkok's Huai Khwang
+                district. We were set up in 2018 to serve the steady stream of construction projects in Bangkok that
+                needed proper engineering support — especially ones involving Chinese contractors or joint ventures.</p>
+              <p>Our team handles structural design, construction supervision, MEP coordination, and technical document
+                translation. We also have dedicated interpreters who work on-site, embedded in the project team.</p>
+              <p>We work Monday to Friday, 8am–5pm, and travel to sites when the project requires it.</p>
+            </div>
+            <div data-zh>
+              <p>公司位于曼谷惠旺县拉玛九路，于2018年正式注册成立，专为当地大量需要专业工程支持的建设项目提供服务，尤其擅长服务涉及中国承包商或合资方的项目。</p>
+              <p>我们的团队负责结构设计、施工监督、机电工程协调及技术文件翻译。公司亦有专职口译员驻场，融入项目团队协同工作。</p>
+              <p>办公时间为周一至周五上午8时至下午5时，如项目有需要，我们亦可赴外地工地。</p>
+            </div>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="info-card">
+            <div class="reg-label"><span data-en>Company Registration No.</span><span data-zh>公司注册号</span><span data-th>เลขทะเบียนบริษัท</span></div>
+            <div class="reg-num">0105561002014</div>
+            <div class="info-row">
+              <svg class="info-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <div>
+                <div class="info-key"><span data-en>Address</span><span data-zh>地址</span><span data-th>ที่อยู่</span></div>
+                <div class="info-val">524/8 Soi Priya-nut, Rama 9 Road<br>Bang Kapi, Huai Khwang, Bangkok 10310</div>
+              </div>
+            </div>
+            <div class="info-row">
+              <svg class="info-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5">
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <path d="M8 21h8M12 17v4"/>
+              </svg>
+              <div>
+                <div class="info-key"><span data-en>Industry</span><span data-zh>行业</span><span data-th>อุตสาหกรรม</span></div>
+                <div class="info-val">
+                  <span data-en>Engineering & Technical Consultancy<br>Architecture / Building / Construction</span>
+                  <span data-zh>工程及技术咨询<br>建筑 / 土建 / 施工</span><span data-th>วิศวกรรมและที่ปรึกษาทางเทคนิค<br>สถาปัตยกรรม / อาคาร / ก่อสร้าง</span>
+                </div>
+              </div>
+            </div>
+            <div class="info-row">
+              <svg class="info-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              <div>
+                <div class="info-key"><span data-en>Office Hours</span><span data-zh>办公时间</span><span data-th>เวลาทำการ</span></div>
+                <div class="info-val">
+                  <span data-en>Monday – Friday, 08:00 – 17:00</span>
+                  <span data-zh>周一至周五，08:00 – 17:00</span><span data-th>จันทร์ – ศุกร์, 08:00 – 17:00</span>
+                </div>
+              </div>
+            </div>
+            <div class="info-row">
+              <svg class="info-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+              <div>
+                <div class="info-key"><span data-en>Languages</span><span data-zh>语言</span><span data-th>ภาษา</span></div>
+                <div class="info-val">Thai · Chinese (Mandarin) · English<br>ไทย · 中文 · English</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- SERVICES -->
+  <section id="services" class="section bg-mid">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="label"><span data-en>What We Do</span><span data-zh>服务范围</span><span data-th>สิ่งที่เราทำ</span></div>
+        <h2 class="sec-title">
+          <span data-en>Our <em>Services</em></span>
+          <span data-zh>核心<em>服务</em></span><span data-th><em>บริการ</em>ของเรา</span>
+        </h2>
+      </div>
+      <div class="services-grid">
+        <div class="svc-card reveal">
+          <div class="svc-num">01</div>
+          <svg class="svc-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M3 9h18M9 21V9" />
+          </svg>
+          <div class="svc-name"><span data-en>Structural & Civil Engineering</span><span data-zh>结构与土木工程</span><span data-th>วิศวกรรมโครงสร้างและโยธา</span></div>
+          <p class="svc-desc"><span data-en>Structural analysis, foundation design, and civil works for residential,
+              commercial, and industrial projects. We work to both Thai standards and international codes.</span><span
+              data-zh>为住宅、商业及工业项目提供结构分析、基础设计及土木工程服务，同时遵循泰国标准与国际规范。</span><span data-th>การวิเคราะห์โครงสร้าง การออกแบบฐานราก และงานโยธาสำหรับโครงการที่พักอาศัย พาณิชยกรรม และอุตสาหกรรม โดยยึดทั้งมาตรฐานไทยและมาตรฐานสากล</span></p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-num">02</div>
+          <svg class="svc-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.5">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="16" y1="13" x2="8" y2="13" />
+            <line x1="16" y1="17" x2="8" y2="17" />
+          </svg>
+          <div class="svc-name"><span data-en>Technical Consulting</span><span data-zh>技术咨询</span><span data-th>ที่ปรึกษาทางเทคนิค</span></div>
+          <p class="svc-desc"><span data-en>Advice on specs, material selection, and compliance with Thai building
+              regulations. We're useful from the early design stage right through to sign-off.</span><span
+              data-zh>就规范、材料选型及泰国建筑法规合规性提供专业建议，从初步设计到竣工验收全程支持。</span><span data-th>ให้คำปรึกษาด้านข้อกำหนด การเลือกวัสดุ และการปฏิบัติตามกฎหมายอาคารของไทย ตั้งแต่ขั้นออกแบบเบื้องต้นจนถึงการตรวจรับงาน</span></p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-num">03</div>
+          <svg class="svc-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.5">
+            <circle cx="12" cy="12" r="3" />
+            <path
+              d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
+          </svg>
+          <div class="svc-name"><span data-en>MEP Engineering</span><span data-zh>机电管道工程</span><span data-th>วิศวกรรมระบบ MEP</span></div>
+          <p class="svc-desc"><span data-en>Mechanical, electrical, and plumbing design for mid-to-large projects. We
+              coordinate MEP systems alongside the structural and architectural teams.</span><span
+              data-zh>为中大型项目设计机械、电气及管道系统，并与结构及建筑团队协调配合，避免现场冲突。</span><span data-th>ออกแบบระบบเครื่องกล ไฟฟ้า และสุขาภิบาลสำหรับโครงการขนาดกลางถึงใหญ่ พร้อมประสานงานร่วมกับทีมโครงสร้างและสถาปัตยกรรม</span></p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-num">04</div>
+          <svg class="svc-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.5">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+          </svg>
+          <div class="svc-name"><span data-en>Construction Supervision</span><span data-zh>施工监督</span><span data-th>การควบคุมงานก่อสร้าง</span></div>
+          <p class="svc-desc"><span data-en>On-site supervision to make sure work matches the approved drawings. We flag
+              issues early, run QA checks, and report progress to all parties.</span><span
+              data-zh>现场监督施工，确保工程符合批准图纸，提前发现问题，执行质量检查并定期汇报进展。</span><span data-th>ควบคุมงานหน้างานให้ตรงตามแบบที่อนุมัติ ตรวจพบปัญหาแต่เนิ่นๆ ตรวจสอบคุณภาพ และรายงานความคืบหน้าต่อทุกฝ่าย</span></p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-num">05</div>
+          <svg class="svc-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.5">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+          <div class="svc-name"><span data-en>Document Translation</span><span data-zh>技术文件翻译</span><span data-th>การแปลเอกสาร</span></div>
+          <p class="svc-desc"><span data-en>Translation of shop drawings, BOQs, contracts, and inspection reports
+              between Thai, Chinese, and English — especially useful for sino-Thai joint ventures.</span><span
+              data-zh>专业翻译施工图、工程量清单、合同及检测报告，特别适用于泰中合资项目，确保沟通准确无误。</span><span data-th>แปลแบบก่อสร้าง บัญชีปริมาณงาน (BOQ) สัญญา และรายงานการตรวจสอบ ระหว่างภาษาไทย จีน และอังกฤษ เหมาะอย่างยิ่งสำหรับกิจการร่วมค้าไทย–จีน</span></p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-num">06</div>
+          <svg class="svc-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.5">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+          <div class="svc-name"><span data-en>Bilingual Site Liaison</span><span data-zh>双语现场联络</span><span data-th>ผู้ประสานงานหน้างานสองภาษา</span></div>
+          <p class="svc-desc"><span data-en>Thai–Chinese–English interpreters embedded in your project team. They handle
+              real-time communication between contractors, local subs, and government offices.</span><span
+              data-zh>泰中英三语口译员驻场，负责承包商、本地分包商及政府部门之间的实时沟通协调。</span><span data-th>ล่ามไทย–จีน–อังกฤษประจำทีมโครงการ ดูแลการสื่อสารแบบเรียลไทม์ระหว่างผู้รับเหมา ผู้รับเหมาช่วงท้องถิ่น และหน่วยงานราชการ</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+
+  <!-- TEAM -->
+  <section id="team" class="section bg-mid">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="label"><span data-en>Our Team</span><span data-zh>我们的团队</span></div>
+        <h2 class="sec-title">
+          <span data-en>The people behind <em>BGTY</em></span>
+          <span data-zh>带领<em>BGTY</em>的核心团队</span><span data-th>บุคลากรเบื้องหลัง <em>BGTY</em></span>
+        </h2>
+      </div>
+            <div class="team-group reveal">
+        <h3 class="team-group-title"><span data-en>Leadership & Business Development</span><span data-zh>领导层与业务发展</span><span data-th>ผู้บริหารและการพัฒนาธุรกิจ</span></h3>
+      </div>
+      <div class="team-grid">
+
+        <div class="team-card reveal">
+          <div class="team-avatar">ZG</div>
+          <div class="team-name">Zou Gang</div>
+          <div class="team-role"><span data-en>Director of Business Development</span><span data-zh>业务发展总监</span><span data-th>ผู้อำนวยการฝ่ายพัฒนาธุรกิจ</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">BZ</div>
+          <div class="team-name">Bing Zheng</div>
+          <div class="team-role"><span data-en>Project Director / Business Department</span><span data-zh>项目总监 / 业务部</span><span data-th>ผู้อำนวยการโครงการ / ฝ่ายธุรกิจ</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">EZ</div>
+          <div class="team-name">Eve Zhao</div>
+          <div class="team-role"><span data-en>Project Director / Architect Manager</span><span data-zh>项目总监 / 建筑经理</span><span data-th>ผู้อำนวยการโครงการ / ผู้จัดการฝ่ายสถาปัตยกรรม</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">JT</div>
+          <div class="team-name">Jirakorn Trinworawut</div>
+          <div class="team-role"><span data-en>Project Adviser / Project Specialist Adviser</span><span data-zh>项目顾问 / 项目专家顾问</span><span data-th>ที่ปรึกษาโครงการ / ที่ปรึกษาผู้เชี่ยวชาญโครงการ</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">JS</div>
+          <div class="team-name">Jiwon Su-Lee</div>
+          <div class="team-role"><span data-en>BD (Public Relation)</span><span data-zh>业务拓展（公共关系）</span><span data-th>พัฒนาธุรกิจ (ประชาสัมพันธ์)</span></div>
+        </div>
+
+      </div>
+
+      <div class="team-group reveal">
+        <h3 class="team-group-title"><span data-en>Project Management</span><span data-zh>项目管理</span><span data-th>การบริหารโครงการ</span></h3>
+      </div>
+      <div class="team-grid">
+
+        <div class="team-card reveal">
+          <div class="team-avatar">WS</div>
+          <div class="team-name">Wenpeng Sunyudai</div>
+          <div class="team-role"><span data-en>Senior Project Manager</span><span data-zh>高级项目经理</span><span data-th>ผู้จัดการโครงการอาวุโส</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">ZX</div>
+          <div class="team-name">Zhangxiaokai</div>
+          <div class="team-role"><span data-en>VPM / Chinese Engineering Coordinator</span><span data-zh>副项目经理 / 中方工程协调</span><span data-th>รองผู้จัดการโครงการ / ผู้ประสานงานวิศวกรรมฝ่ายจีน</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">CJ</div>
+          <div class="team-name">Chaipak Jaensawas</div>
+          <div class="team-role"><span data-en>Project Manager</span><span data-zh>项目经理</span><span data-th>ผู้จัดการโครงการ</span></div>
+        </div>
+
+      </div>
+
+      <div class="team-group reveal">
+        <h3 class="team-group-title"><span data-en>Engineering</span><span data-zh>工程团队</span><span data-th>ทีมวิศวกรรม</span></h3>
+      </div>
+      <div class="team-grid">
+
+        <div class="team-card reveal">
+          <div class="team-avatar">WS</div>
+          <div class="team-name">Watcharapong Sitthipon</div>
+          <div class="team-role"><span data-en>Civil Engineer / Team Lead (Civil)</span><span data-zh>土木工程师 / 土木组组长</span><span data-th>วิศวกรโยธา / หัวหน้าทีม (โยธา)</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">PM</div>
+          <div class="team-name">Phuchit Maenod</div>
+          <div class="team-role"><span data-en>Senior Electrical Engineer / Team Lead (MEP)</span><span data-zh>高级电气工程师 / 机电组组长</span><span data-th>วิศวกรไฟฟ้าอาวุโส / หัวหน้าทีม (งานระบบ)</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">SY</div>
+          <div class="team-name">Songsak Yotharupap</div>
+          <div class="team-role"><span data-en>Senior Mechanical Engineer</span><span data-zh>高级机械工程师</span><span data-th>วิศวกรเครื่องกลอาวุโส</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">PP</div>
+          <div class="team-name">Phongsak Phanboon</div>
+          <div class="team-role"><span data-en>Civil Engineer</span><span data-zh>土木工程师</span><span data-th>วิศวกรโยธา</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">PW</div>
+          <div class="team-name">Pimsakoe Wongchai</div>
+          <div class="team-role"><span data-en>Civil Engineer</span><span data-zh>土木工程师</span><span data-th>วิศวกรโยธา</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">TS</div>
+          <div class="team-name">Tongehananth Senthavong</div>
+          <div class="team-role"><span data-en>Civil Engineer</span><span data-zh>土木工程师</span><span data-th>วิศวกรโยธา</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">AA</div>
+          <div class="team-name">Aewut Ainkam</div>
+          <div class="team-role"><span data-en>Mechanical Engineer</span><span data-zh>机械工程师</span><span data-th>วิศวกรเครื่องกล</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">VB</div>
+          <div class="team-name">Vutha Brisdein</div>
+          <div class="team-role"><span data-en>MEP Engineer</span><span data-zh>机电管道工程师</span><span data-th>วิศวกรงานระบบประกอบอาคาร</span></div>
+        </div>
+
+      </div>
+
+      <div class="team-group reveal">
+        <h3 class="team-group-title"><span data-en>Quantity Surveying & Cost Control</span><span data-zh>工料测量与成本控制</span><span data-th>การประมาณราคาและควบคุมต้นทุน</span></h3>
+      </div>
+      <div class="team-grid">
+
+        <div class="team-card reveal">
+          <div class="team-avatar">LD</div>
+          <div class="team-name">Longren Dong</div>
+          <div class="team-role"><span data-en>Project QS Control Manager / Department Manager</span><span data-zh>项目工料测量控制经理 / 部门经理</span><span data-th>ผู้จัดการควบคุมปริมาณงานโครงการ / ผู้จัดการแผนก</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">JY</div>
+          <div class="team-name">Jiang Yang</div>
+          <div class="team-role"><span data-en>Project QS Control Team</span><span data-zh>项目工料测量控制团队</span><span data-th>ทีมควบคุมปริมาณงานโครงการ</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">WH</div>
+          <div class="team-name">Wang Huan</div>
+          <div class="team-role"><span data-en>Project QS Control Team</span><span data-zh>项目工料测量控制团队</span><span data-th>ทีมควบคุมปริมาณงานโครงการ</span></div>
+        </div>
+
+      </div>
+
+      <div class="team-group reveal">
+        <h3 class="team-group-title"><span data-en>Safety, Health & Environment</span><span data-zh>安全、健康与环境</span><span data-th>ความปลอดภัย อาชีวอนามัย และสิ่งแวดล้อม</span></h3>
+      </div>
+      <div class="team-grid">
+
+        <div class="team-card reveal">
+          <div class="team-avatar">PW</div>
+          <div class="team-name">Prasitipon Wongphong</div>
+          <div class="team-role"><span data-en>Safety Officer</span><span data-zh>安全主任</span><span data-th>เจ้าหน้าที่ความปลอดภัย</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">CU</div>
+          <div class="team-name">Cedsada Urea</div>
+          <div class="team-role"><span data-en>EHS Officer</span><span data-zh>环境健康安全主任</span><span data-th>เจ้าหน้าที่สิ่งแวดล้อม อาชีวอนามัย และความปลอดภัย</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">NT</div>
+          <div class="team-name">Nopparat Thammalath</div>
+          <div class="team-role"><span data-en>Safety Engineer</span><span data-zh>安全工程师</span><span data-th>วิศวกรความปลอดภัย</span></div>
+        </div>
+
+      </div>
+
+      <div class="team-group reveal">
+        <h3 class="team-group-title"><span data-en>HR, Coordination & Documentation</span><span data-zh>人力资源、协调与文件</span><span data-th>ทรัพยากรบุคคล การประสานงาน และเอกสาร</span></h3>
+      </div>
+      <div class="team-grid">
+
+        <div class="team-card reveal">
+          <div class="team-avatar">JP</div>
+          <div class="team-name">Jakkawan Pinka</div>
+          <div class="team-role"><span data-en>Human Resources Officer</span><span data-zh>人力资源主任</span><span data-th>เจ้าหน้าที่ฝ่ายทรัพยากรบุคคล</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">SX</div>
+          <div class="team-name">Sanyoung Xoung</div>
+          <div class="team-role"><span data-en>Team Coordinator / Senior Coordinator</span><span data-zh>团队协调员 / 高级协调员</span><span data-th>ผู้ประสานงานทีม / ผู้ประสานงานอาวุโส</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">SS</div>
+          <div class="team-name">Silaingphiao See Sao</div>
+          <div class="team-role"><span data-en>Coordinator</span><span data-zh>协调员</span><span data-th>ผู้ประสานงาน</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">NR</div>
+          <div class="team-name">Nichakan Rattanakit</div>
+          <div class="team-role"><span data-en>Document Control &amp; Translator Coordinator</span><span data-zh>文件控制及翻译协调员</span><span data-th>ควบคุมเอกสาร &amp; ผู้ประสานงานการแปล</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">NP</div>
+          <div class="team-name">Natcharika Phanboonsa</div>
+          <div class="team-role"><span data-en>Document Control</span><span data-zh>文件控制</span><span data-th>ควบคุมเอกสาร</span></div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">PN</div>
+          <div class="team-name">Palinnaya Nithong</div>
+          <div class="team-role"><span data-en>Interpreter / Document</span><span data-zh>口译员 / 文件</span><span data-th>ล่าม / เอกสาร</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CAREERS -->
+  <section id="careers" class="section">
+    <div class="section-inner">
+      <div class="careers-layout">
+        <div class="reveal">
+          <div class="label"><span data-en>Careers</span><span data-zh>职位招聘</span><span data-th>ร่วมงานกับเรา</span></div>
+          <h2 class="sec-title">
+            <span data-en>Work with <em>us</em></span>
+            <span data-zh>加入<em>我们</em></span><span data-th>ร่วมงานกับ<em>เรา</em></span>
+          </h2>
+          <div class="careers-text">
+            <div data-en>
+              <p>We hire based on attitude as much as qualifications. If you're reliable and willing to work on active
+                project sites, we'd like to hear from you. New graduates are welcome.</p>
+            </div>
+            <div data-zh>
+              <p>我们同样重视工作态度与专业资质。如果您踏实可靠、愿意赴工地现场工作，欢迎联系我们。应届毕业生亦受欢迎。</p>
+            </div>
+          </div>
+          <div class="label" style="margin-top:4px"><span data-en>Benefits</span><span data-zh>员工福利</span><span data-th>สวัสดิการ</span></div>
+          <ul class="benefits">
+            <li><span data-en>Social security (Thai labor law)</span><span data-zh>社会保险（依泰国劳动法）</span><span data-th>ประกันสังคม (ตามกฎหมายแรงงานไทย)</span></li>
+            <li><span data-en>Annual performance bonus</span><span data-zh>年度绩效奖金</span><span data-th>โบนัสประจำปีตามผลงาน</span></li>
+            <li><span data-en>Medical & life insurance</span><span data-zh>医疗及人寿保险</span><span data-th>ประกันสุขภาพและประกันชีวิต</span></li>
+            <li><span data-en>Company uniform</span><span data-zh>公司制服</span><span data-th>ชุดยูนิฟอร์มบริษัท</span></li>
+            <li><span data-en>Travel & overtime allowances</span><span data-zh>差旅及加班补贴</span><span data-th>เบี้ยเลี้ยงเดินทางและค่าล่วงเวลา</span></li>
+            <li><span data-en>Housing allowance (role-dependent)</span><span data-zh>住房补贴（视职位而定）</span><span data-th>ค่าที่พัก (ขึ้นอยู่กับตำแหน่ง)</span></li>
+            <li><span data-en>Free shuttle bus</span><span data-zh>免费班车接送</span><span data-th>รถรับส่งฟรี</span></li>
+            <li><span data-en>Gratuity / severance pay</span><span data-zh>服务期满金 / 遣散费</span><span data-th>เงินบำเหน็จ / ค่าชดเชย</span></li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <div class="job-list">
+            <div class="job-card">
+              <div>
+                <div class="job-title"><span data-en>Chinese–Thai Interpreter</span><span data-zh>中泰语翻译员</span><span data-th>ล่ามจีน–ไทย</span></div>
+                <div class="job-meta">
+                  <span><span data-en>Bangkok + Field Sites</span><span data-zh>曼谷 + 工地现场</span><span data-th>กรุงเทพฯ + หน้างาน</span></span>
+                  <span>฿25,000 – ฿40,000</span>
+                </div>
+              </div>
+              <span class="job-badge"><span data-en>Hiring</span><span data-zh>招聘中</span><span data-th>กำลังรับสมัคร</span></span>
+            </div>
+            <div class="job-card">
+              <div>
+                <div class="job-title"><span data-en>Civil / Structural Engineer</span><span data-zh>土木 / 结构工程师</span><span data-th>วิศวกรโยธา / โครงสร้าง</span>
+                </div>
+                <div class="job-meta">
+                  <span>Bangkok</span>
+                  <span><span data-en>Negotiable</span><span data-zh>薪资面议</span><span data-th>ตามตกลง</span></span>
+                </div>
+              </div>
+              <span class="job-badge"><span data-en>Hiring</span><span data-zh>招聘中</span><span data-th>กำลังรับสมัคร</span></span>
+            </div>
+            <div class="job-card">
+              <div>
+                <div class="job-title"><span data-en>Project Coordinator</span><span data-zh>项目协调员</span><span data-th>ผู้ประสานงานโครงการ</span></div>
+                <div class="job-meta">
+                  <span>Bangkok</span>
+                  <span><span data-en>Negotiable</span><span data-zh>薪资面议</span><span data-th>ตามตกลง</span></span>
+                </div>
+              </div>
+              <span class="job-badge"><span data-en>Hiring</span><span data-zh>招聘中</span><span data-th>กำลังรับสมัคร</span></span>
+            </div>
+            <div class="job-card">
+              <div>
+                <div class="job-title"><span data-en>MEP Engineer</span><span data-zh>机电管道工程师</span><span data-th>วิศวกรระบบ MEP</span></div>
+                <div class="job-meta">
+                  <span>Bangkok</span>
+                  <span><span data-en>Negotiable</span><span data-zh>薪资面议</span><span data-th>ตามตกลง</span></span>
+                </div>
+              </div>
+              <span class="job-badge"><span data-en>Hiring</span><span data-zh>招聘中</span><span data-th>กำลังรับสมัคร</span></span>
+            </div>
+            <div class="job-open-call">
+              <p><span data-en>Don't see your role? Send us your CV anyway — we're open to good people.</span><span
+                  data-zh>没有合适职位？欢迎主动投递简历，我们随时欢迎优秀人才。</span><span data-th>ไม่พบตำแหน่งที่ใช่? ส่งประวัติของคุณมาได้เลย เรายินดีต้อนรับคนเก่งเสมอ</span></p>
+              <a href="#contact" class="btn-border" style="font-size:11px;padding:9px 22px;display:inline-flex">
+                <span data-en>Send Your CV</span><span data-zh>发送简历</span><span data-th>ส่งประวัติของคุณ</span>
+              </a>
+            </div>
+
+            <div class="apply-box">
+              <div class="apply-title">
+                <span data-en>How to Apply</span><span data-zh>如何申请</span><span data-th>วิธีการสมัครงาน</span>
+              </div>
+              <p class="apply-sub">
+                <span data-en>Apply through our official job listings, or verify our company details below.</span><span data-zh>请通过我们的官方招聘页面投递申请，或在下方查询公司注册信息。</span><span data-th>สมัครผ่านประกาศรับสมัครงานอย่างเป็นทางการของเรา หรือตรวจสอบข้อมูลบริษัทด้านล่าง</span>
+              </p>
+              <div class="apply-links">
+                <a href="https://www.jobthai.com/th/company/295490" target="_blank" rel="noopener" class="btn-border">
+                  <span data-en>Job Openings on JobThai</span><span data-zh>JobThai 招聘职位</span><span data-th>ตำแหน่งงานบน JobThai</span>
+                </a>
+                <a href="https://www.dataforthai.com/company/0105561002014/" target="_blank" rel="noopener" class="btn-border btn-border-ghost">
+                  <span data-en>Company Registration Info</span><span data-zh>公司注册信息</span><span data-th>ข้อมูลการจดทะเบียนบริษัท</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">BGTY</div>
+        <div class="footer-sub">Engineering &amp; Consultant Co., Ltd.</div>
+        <div class="footer-tagline">
+          <span data-en>Structural work, technical consulting, and bilingual coordination — all under one roof.</span>
+          <span data-zh>结构工程、技术咨询与双语协调——一站式服务。</span><span data-th>งานโครงสร้าง การให้คำปรึกษาทางเทคนิค และการประสานงานสองภาษา ครบจบในที่เดียว</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title"><span data-en>Company</span><span data-zh>公司</span><span data-th>บริษัท</span></div>
+        <ul class="footer-links">
+          <li><a href="#about"><span data-en>About</span><span data-zh>关于我们</span><span data-th>เกี่ยวกับเรา</span></a></li>
+          <li><a href="#services"><span data-en>Services</span><span data-zh>服务</span><span data-th>บริการ</span></a></li>
+          <li><a href="#team"><span data-en>Team</span><span data-zh>团队</span><span data-th>ทีมงาน</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title"><span data-en>Careers</span><span data-zh>招聘</span><span data-th>ร่วมงานกับเรา</span></div>
+        <ul class="footer-links">
+          <li><a href="#careers"><span data-en>Open Positions</span><span data-zh>在招职位</span><span data-th>ตำแหน่งที่เปิดรับ</span></a></li>
+          <li><a href="#careers"><span data-en>Benefits</span><span data-zh>员工福利</span><span data-th>สวัสดิการ</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title"><span data-en>Contact</span><span data-zh>联系</span><span data-th>ติดต่อเรา</span></div>
+        <ul class="footer-links">
+          <li><a href="#contact"><span data-en>Get in Touch</span><span data-zh>联系我们</span><span data-th>ติดต่อเรา</span></a></li>
+          <li><a href="https://maps.google.com/?q=Rama+9+Road+Bang+Kapi+Huai+Khwang+Bangkok" target="_blank"
+              rel="noopener"><span data-en>Find Our Office</span><span data-zh>查看办公地址</span><span data-th>ดูที่ตั้งสำนักงาน</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 BGTY Engineering &amp; Consultant Co., Ltd.</div>
+      <div class="footer-reg">Reg. 0105561002014 · Bangkok, Thailand</div>
+    </div>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      document.body.className = 'lang-' + lang;
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+      document.getElementById('btn-th').classList.toggle('active', lang === 'th');
+    }
+
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+
+    const ham = document.getElementById('hamburger');
+    const mm = document.getElementById('mobileMenu');
+    ham.addEventListener('click', () => {
+      ham.classList.toggle('open');
+      mm.classList.toggle('open');
+      document.body.style.overflow = mm.classList.contains('open') ? 'hidden' : '';
+    });
+    document.querySelectorAll('.mm-link').forEach(l => {
+      l.addEventListener('click', () => {
+        ham.classList.remove('open');
+        mm.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    const done = new Set();
+    document.querySelectorAll('[data-count]').forEach(el => {
+      new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting && !done.has(e.target)) {
+            done.add(e.target);
+            const target = parseInt(e.target.dataset.count);
+            let v = 0, step = target / 60;
+            const tick = () => { v = Math.min(v + step, target); e.target.textContent = Math.round(v); if (v < target) requestAnimationFrame(tick); };
+            requestAnimationFrame(tick);
+          }
+        });
+      }, { threshold: 0.5 }).observe(el);
+    });
+
+    function submitForm(btn) {
+      btn.textContent = '...';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      }, 1000);
+    }
+  </script>
 </body>
+
 </html>
